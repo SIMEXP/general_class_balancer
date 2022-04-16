@@ -1,6 +1,6 @@
 # General Class Balancer
 
-This program finds a subset of your dataset with balanced confounding factors.
+This program finds a subset of your dataset with balanced confounding factors (also known as "data matching"), though it can work with any combination of categorical and continuous variables.
 
 Given a labeled dataset with any number of classes and a number of confounding factors for each datapoint, this matches data in each class to one another, such that the distributions of each confounding factor are the same in each class. This may be used to sample a training set on which a given deep learning model will not take confounding factors into account during its classification.
 
