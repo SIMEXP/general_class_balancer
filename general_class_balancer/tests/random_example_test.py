@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from general_class_balancer.general_class_balancer import (
     class_balance,
-    test_all,
+    multi_mannwhitneyu,
 )
 
 # Sample script showing how this balances on simulated, random data.
@@ -51,6 +51,19 @@ classes = np.array(
     + [1 for x in range(int(N / 3))]
     + [2 for x in range(int(N / 3))]
 )
+
+
+def test_all(classes, confounds):
+    unique_classes = np.unique(classes)
+    all_min_p = np.inf
+    for i in range(confounds.shape[0]):
+        if not isinstance(confounds[i, 0], str):
+            ts = [confounds[i, classes == j] for j in unique_classes]
+            min_p, max_p = multi_mannwhitneyu(ts)
+            if min_p < all_min_p:
+                all_min_p = min_p
+    return all_min_p
+
 
 selection = class_balance(classes, confounds, plim=0.25)
 print(np.sum(selection))
