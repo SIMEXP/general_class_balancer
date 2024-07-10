@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "general_class_balancer"
+description = "Finds a subset of your dataset with balanced confounding factors (also known as 'data matching')."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "mleming"}]
+maintainers = [{ name = "Hao-Ting Wang", email = "htwangtw@gmail.com" }]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "setuptools",
+  "numpy",
+  "scipy",
+  "pandas",
+  "matplotlib",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "flake8",
+  "pre-commit",
+  "general_class_balancer[test]",
+  "pandas-stubs",
+]
+test = ["pytest", "pytest-cov"]
+# Aliases
+tests = ["general_class_balancer[test]"]
+
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "general_class_balancer/_version.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [".git_archival.txt"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["general_class_balancer"]
+exclude = [".github", ]
+
+[tool.black]
+target-version = ["py310"]
+exclude = "general_class_balancer/_version.py"
+line-length = 79

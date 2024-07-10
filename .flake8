@@ -1,0 +1,9 @@
+[flake8]
+doctests = False
+exclude =
+    **/__init__.py
+    **/tests/*
+    *build/
+
+per-file-ignores =
+    general_class_balancer/general_class_balancer.py:E722
