@@ -1,6 +1,7 @@
 # General Class Balancer
 
 Author: mleming
+
 Maintainer: Hao-Ting Wang
 
 ## Description

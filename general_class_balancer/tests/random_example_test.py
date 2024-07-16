@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 from numpy.random import normal as norm
 import matplotlib.pyplot as plt
@@ -94,4 +95,6 @@ else:
     plt.hist(confounds[cnum, classes == 1], bins=bins)
     plt.hist(confounds[cnum, classes == 2], bins=bins)
 
-plt.show()
+plt.savefig("test_data.png")
+
+sys.exit()
